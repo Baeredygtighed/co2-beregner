@@ -1,5 +1,6 @@
 import "./globals.css"
-import { Providers } from "./providers"
+import { Providers } from "../contexts"
+import MenuControl from "@/components/menu-control"
 
 export const metadata = {
 	title: "Create Next App",
@@ -11,6 +12,9 @@ export default function RootLayout({ children }) {
 		<html lang="da">
 			<body>
 				<Providers>
+					<header>
+						<MenuControl />
+					</header>
 					<main>
 						{children}
 					</main>
