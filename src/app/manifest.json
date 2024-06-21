@@ -1,0 +1,18 @@
+{
+	"name": "CO2 Beregner",
+	"short_name": "CO2",
+	"description": "App til Byggeriets Uddannelsers undervisningsforløb om bæredygtighed i byggeriet",
+	"start_url": "/",
+	"display": "standalone",
+	"orientation": "portrait",
+	"background_color": "#000000",
+	"theme_color": "#ffffff",
+	"icons": [
+		{
+			"src": "/vercel.svg",
+			"sizes": "144x144",
+			"type": "image/svg",
+			"purpose": "any"
+		}
+	]
+}
