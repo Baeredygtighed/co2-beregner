@@ -1,4 +1,5 @@
 "use client"
+import { Button } from "@nextui-org/react"
 import { useEffect } from "react"
 
 export default function Error({	error, reset }) {
@@ -9,7 +10,7 @@ export default function Error({	error, reset }) {
 	return (
 		<>
 			<h1>Ups! Noget gik galt</h1>
-			<button onClick={() => reset()}>Prøv igen</button>
+			<Button onClick={() => reset()}>Prøv igen</Button>
 		</>
 	)
 }
