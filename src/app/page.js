@@ -1,14 +1,14 @@
 "use client"
-import { useState, useEffect } from "react"
-import axios from "axios"
+import useAxios from "@/hooks/use-axios"
 
 export default function Home() {
-	const [data, setData] = useState(null)
+	const { loading, data, error } = useAxios("/api/test")
 
-	useEffect(function() {
-		axios.get("/api/test")
-			.then(response => setData(response.data))
-	}, [])
-
-	return data && <p>{data.message}</p>
+	return (
+		<>
+			{loading && <p>Loading...</p>}
+			{data && <h1>{data.message}</h1>}
+			{error && <p className="text-red-600">{error.message}</p>}
+		</>
+	)
 }
