@@ -1,3 +1,4 @@
+import Nav from "@/components/nav"
 import "./globals.css"
 import { Providers } from "./providers"
 
@@ -14,6 +15,7 @@ export default function RootLayout({ children }) {
 					<main>
 						{children}
 					</main>
+					<Nav />
 				</Providers>
 			</body>
 		</html>
