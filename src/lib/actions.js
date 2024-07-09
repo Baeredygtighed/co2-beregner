@@ -3,7 +3,8 @@
 import { connect } from "./db"
 import User from "@/models/user"
 import { cookies } from "next/headers"
-import { encrypt } from "@/lib/crypt"
+import { decrypt, encrypt } from "@/lib/crypt"
+import Material from "@/models/material"
 
 export async function authenticate(_currentState, formData) {
 	const username = formData.get("username")
@@ -25,6 +26,28 @@ export async function authenticate(_currentState, formData) {
 		return true
 	} catch (error) {
 		console.log(error)
+		return error.message
+	}
+}
+
+export async function createMaterial(_currentState, formData) {
+	const user = cookies().get("session")?.value
+	if (!user || decrypt(user) !== "admin") return "Du har ikke adgang til denne funktion"
+
+	const material = {
+		name: formData.get("name"),
+		category: formData.get("category"),
+		production_cost: formData.get("production_cost"),
+		usage_cost: formData.get("usage_cost"),
+		destruction_cost: formData.get("destruction_cost"),
+		//image: formData.get("image"),
+	}
+	try {
+		await connect()
+		await new Material(material).save()
+		return true
+	} catch (error) {
+		console.error(error)
 		return error.message
 	}
 }
