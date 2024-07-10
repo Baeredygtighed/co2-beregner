@@ -15,7 +15,7 @@ export default function Page() {
 			{data && (
 				<ul>
 					{data.results.map(material => (
-						<li key={material._id} className="flex justify-between odd:bg-gray-200">
+						<li key={material.name} className="flex justify-between odd:bg-gray-200">
 							{material.name}
 							<div>
 								<Button size="small" variant="light"><FaPen/></Button>
