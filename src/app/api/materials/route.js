@@ -7,7 +7,7 @@ export async function GET(request) {
 
 	try {
 		await connect()
-		const materials = await Material.find().limit(limit).skip(offset)
+		const materials = await Material.find().select("-_id").limit(limit).skip(offset)
 		return Response.json({
 			url: request.url,
 			next: materials.length ? `${request.url}?limit=${limit}&offset=${parseInt(offset) + parseInt(limit)}` : null,
