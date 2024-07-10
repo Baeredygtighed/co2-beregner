@@ -1,5 +1,5 @@
 "use client";
-import MaterialList from "@/components/material-list";
+import MaterialList from "@/components/materials/material-list";
 import useAxios from "@/hooks/use-axios";
 import { CgSpinner } from "react-icons/cg";
 
