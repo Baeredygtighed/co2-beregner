@@ -15,7 +15,7 @@ export default function AddCheckBox({ className }) {
 
     return (
         <button onClick={clickHandler} data-checked="false" ref={checkbox} className={twMerge(`
-            border-2 border-black size-7 flex justify-center items-center rounded-md text-black
+            border-2 border-black size-7 flex justify-center items-center rounded-md text-black transition-all
             [&>.plus-icon]:block [&>.check-icon]:hidden
             [&>.plus-icon]:data-[checked=true]:hidden [&>.check-icon]:data-[checked=true]:block data-[checked=true]:text-blue-500 data-[checked=true]:border-blue-500
         `, className)}>
