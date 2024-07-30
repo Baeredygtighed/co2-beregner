@@ -1,10 +1,9 @@
 "use client";
 
-import { RxPlus } from "react-icons/rx";
-import { RxCheck } from "react-icons/rx";
+import { RxPlus, RxMinus, RxCheck } from "react-icons/rx";
 import { twMerge } from "tailwind-merge";
 
-export default function AddCheckBox({ className, onChange = null, checked = false}) {
+export default function AddCheckBox({ className, onChange = null, checked = false, minus = false}) {
 
     const clickHandler = event => {
 
@@ -15,12 +14,12 @@ export default function AddCheckBox({ className, onChange = null, checked = fals
 
     return (
         <div onClick={clickHandler} data-checked={checked} className={twMerge(`
-            border-2 border-black size-7 flex justify-center items-center rounded-md text-black transition-all
+            border-2 border-black size-7 flex justify-center items-center rounded-md text-black cursor-pointer transition-all
             [&>.plus-icon]:block [&>.check-icon]:hidden
             [&>.plus-icon]:data-[checked=true]:hidden [&>.check-icon]:data-[checked=true]:block data-[checked=true]:text-blue-500 data-[checked=true]:border-blue-500
         `, className)}>
             <RxPlus className="plus-icon size-6 pointer-events-none" />
-            <RxCheck className="check-icon size-6 pointer-events-none" />
+            { minus ? <RxMinus className="check-icon size-6 pointer-events-none" /> : <RxCheck className="check-icon size-6 pointer-events-none" />}
         </div>
     );
 }
