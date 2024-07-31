@@ -2,6 +2,9 @@ import "./globals.css"
 import { Providers } from "./providers"
 import { ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
+import Navbar from "@/components/navbar"
+import NavbarButton from "@/components/navbar-button"
+import { GiHouse, GiOpenBook, GiWoodBeam  } from "react-icons/gi";
 
 export const metadata = {
 	title: "Create Next App",
@@ -16,6 +19,11 @@ export default function RootLayout({ children }) {
 					<main>
 						{children}
 					</main>
+					<Navbar>
+						<NavbarButton url="/" text="Hjem" icon={<GiHouse />} />
+						<NavbarButton url="/materials" alias="/compare" text="Materialer" icon={<GiWoodBeam />} />
+						<NavbarButton url="/lookup" text="Opslag" icon={<GiOpenBook />} />
+					</Navbar>
 				</Providers>
 				<ToastContainer
 					position="bottom-center"
