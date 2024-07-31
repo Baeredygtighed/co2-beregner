@@ -13,8 +13,9 @@ export default function Page() {
 	const router = useRouter()
 
 	useEffect(function() {
-		if (errorMessage === true) {
-			router.push("/dashboard/materials")
+		if (errorMessage?.success === true) {
+			toast.success("Materialet er gemt")
+			router.push("/dashboard/edit-material/" + errorMessage.doc._id)
 		} else if (errorMessage) {
 			toast.error(errorMessage)
 		}
