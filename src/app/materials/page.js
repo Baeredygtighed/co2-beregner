@@ -14,7 +14,7 @@ export default function MaterialsPage() {
     const [selectedMaterials, setSelectedMaterials] = useState(null);
 
     const readCookie = async () => setSelectedMaterials(await getSelectedMaterials());
-    const search = event => axios.update(`/api/materials?search=${event.target.value}`);
+    const search = event => axios.update(`/api/materials${event && event.target.value !== '' ? `?search=${event.target.value}` : ""}`);
 
     useEffect(() => { readCookie() }, []);
 
@@ -25,7 +25,7 @@ export default function MaterialsPage() {
 
                 <h1 className="text-center">Materialer</h1>
 
-                <Input className="mb-1" startContent={<IoSearchOutline />} variant="bordered" placeholder="Søg..." onInput={search} />
+                <Input className="mb-1" startContent={<IoSearchOutline />} variant="bordered" isClearable="true" placeholder="Søg..." onInput={search} onClear={search} />
 
                 {axios.error && <div className="text-center text-red-600">Error: {error.message}</div>}
                 {axios.loading && <div className="flex justify-center items-center"><CgSpinner className="animate-[spin_.5s_linear_infinite] size-10 text-blue-600" /></div>}
