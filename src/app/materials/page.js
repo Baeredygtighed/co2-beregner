@@ -9,14 +9,14 @@ import { CgSpinner } from "react-icons/cg";
 import { IoSearchOutline } from "react-icons/io5";
 
 export default function MaterialsPage() {
-    const { loading, data, error } = useAxios("/api/materials");
+    const axios = useAxios("/api/materials");
 
     const [selectedMaterials, setSelectedMaterials] = useState(null);
 
     const readCookie = async () => setSelectedMaterials(await getSelectedMaterials());
+    const search = event => axios.update(`/api/materials?search=${event.target.value}`);
 
     useEffect(() => { readCookie() }, []);
-
 
     return (
         <div className="flex">
@@ -25,11 +25,11 @@ export default function MaterialsPage() {
 
                 <h1 className="text-center">Materialer</h1>
 
-                <Input startContent={<IoSearchOutline />} variant="bordered" placeholder="Søg..." />
+                <Input className="mb-1" startContent={<IoSearchOutline />} variant="bordered" placeholder="Søg..." onInput={search} />
 
-                {error && <div className="text-center text-red-600">Error: {error.message}</div>}
-                {loading && <div className="flex justify-center items-center"><CgSpinner className="animate-[spin_.5s_linear_infinite] size-10 text-blue-600" /></div>}
-                {data && selectedMaterials && <MaterialList materials={data.results} selectedMaterials={selectedMaterials} onChange={readCookie} />}
+                {axios.error && <div className="text-center text-red-600">Error: {error.message}</div>}
+                {axios.loading && <div className="flex justify-center items-center"><CgSpinner className="animate-[spin_.5s_linear_infinite] size-10 text-blue-600" /></div>}
+                {axios.data && selectedMaterials && <MaterialList materials={axios.data.results} selectedMaterials={selectedMaterials} onChange={readCookie} />}
 
             </section>
 
