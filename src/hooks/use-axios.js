@@ -7,12 +7,16 @@ export default function useAxios(endpoint) {
 	const [data, setData] = useState(null)
 	const [error, setError] = useState(null)
 
-	useEffect(function () {
-		axios.get(endpoint)
-			.then(response => setData(response.data))
-			.catch(error => {setError(error)})
-			.finally(() => setLoading(false))
-	}, [])
+	const update = newEndpoint => {
+		newEndpoint ?? endpoint;
 
-	return { loading, data, error }
+		axios.get(newEndpoint)
+			.then(response => setData(response.data))
+			.catch(error => { setError(error) })
+			.finally(() => setLoading(false))
+	}
+
+	useEffect(() => { update(endpoint) }, [])
+
+	return { loading, data, error, update }
 }
