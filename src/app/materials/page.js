@@ -1,11 +1,11 @@
 "use client";
 import MaterialList from "@/components/materials/material-list";
 import MaterialSelector from "@/components/materials/material-selector";
+import Spinner from "@/components/spinner";
 import useAxios from "@/hooks/use-axios";
 import { getSelectedMaterials } from "@/lib/actions";
 import { Input } from "@nextui-org/react";
 import { useEffect, useState } from "react";
-import { CgSpinner } from "react-icons/cg";
 import { IoSearchOutline } from "react-icons/io5";
 
 export default function MaterialsPage() {
@@ -23,12 +23,12 @@ export default function MaterialsPage() {
 
             <section className="flex-1 flex flex-col content-stretch px-2">
 
-                <h1 className="text-center">Materialer</h1>
+                <h1 className="text-center text-3xl font-semibold my-2">Materialer</h1>
 
                 <Input className="mb-1" startContent={<IoSearchOutline />} variant="bordered" isClearable="true" placeholder="Søg..." onInput={search} onClear={search} />
 
                 {axios.error && <div className="text-center text-red-600">Error: {error.message}</div>}
-                {axios.loading && <div className="flex justify-center items-center"><CgSpinner className="animate-[spin_.5s_linear_infinite] size-10 text-blue-600" /></div>}
+                {axios.loading && <Spinner />}
                 {axios.data && selectedMaterials && <MaterialList materials={axios.data.results} selectedMaterials={selectedMaterials} onChange={readCookie} />}
 
             </section>

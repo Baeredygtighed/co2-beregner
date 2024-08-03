@@ -1,7 +1,11 @@
 "use client";
+import BackButton from "@/components/back-button";
+import Spinner from "@/components/spinner";
 import StackedChart from "@/components/stacked-chart";
 import { getSelectedMaterials } from "@/lib/actions";
+import Link from "next/link";
 import { useEffect, useState } from "react";
+import { IoIosArrowBack } from "react-icons/io";
 
 export default function ComparePage() {
     const [selectedMaterials, setSelectedMaterials] = useState(null);
@@ -15,7 +19,6 @@ export default function ComparePage() {
 
         if (selectedMaterials) {
 
-            console.log(selectedMaterials);
             const labels = selectedMaterials.map(material => material.name);
             const datasets = [
                 {
@@ -42,10 +45,17 @@ export default function ComparePage() {
     }, [selectedMaterials]);
 
     return (
-        <div className="p-2">
-            <h1>Sammenlign materialer</h1>
-            {chartData && <StackedChart labels={chartData.labels} datasets={chartData.datasets} />}
-        </div>
+        <>
+            <BackButton />
+            <div className="px-2" >
+
+                <h1 className="text-center text-3xl font-semibold my-2 flex-1">Sammenlign materialer</h1>
+
+                {!chartData && <Spinner />}
+                {chartData && <StackedChart labels={chartData.labels} datasets={chartData.datasets} />}
+            </div>
+        </>
+
     )
 
 }
