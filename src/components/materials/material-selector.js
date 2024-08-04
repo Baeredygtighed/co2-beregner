@@ -11,9 +11,9 @@ export default function MaterialSelector({ materials = [], onChange = null, clas
 
     return (
         <aside tabIndex={-1} onFocus={() => setSize("md")} onBlur={() => setSize("sm")} className={twMerge(
-            "w-20 overflow-auto sticky top-0 focus-within:w-[45%] transition-all p-1 pb-28 border-l-1 border-gray-300 flex flex-col bg-slate-200"
+            "w-20 focus-within:w-[45%] transition-all p-1 pb-28 border-l-1 border-gray-300 flex flex-col bg-slate-200"
             , className)}>
-            <h2 className="text-sm text-center sticky -top-1 bg-slate-200 z-10 -m-1 px-1">Valgte</h2>
+            <h2 className="text-sm text-center sticky -top-0 bg-slate-200 z-10 -m-1 px-1">Valgte</h2>
             {materials?.length > 0 && <>
 
                 <MaterialList size={size} materials={materials} selectedMaterials={materials} onChange={event => { if (onChange) onChange(event) }} />
