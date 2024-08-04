@@ -33,8 +33,10 @@ export default function LookupPage() {
 
     return (
         <>
-            <h1 className="text-center text-3xl font-semibold my-2">Opslag</h1>
-            <SearchBar className="my-2" onInput={ event => axios.update(`/api/terms/${event ? event.target.value : ''}`)} />
+        <header className="sticky top-0 py-2 bg-white border-b-1 z-10">
+            <h1 className="text-center text-3xl font-semibold mb-2">Opslag</h1>
+            <SearchBar onInput={ event => axios.update(`/api/terms/${event ? event.target.value : ''}`)} />
+        </header>
             {axios.error && <div className="text-center text-red-600">Error: {axios.error.message}</div>}
             {axios.loading && <Spinner />}
             {axios.data && <TermList data={axios.data.results} />}
