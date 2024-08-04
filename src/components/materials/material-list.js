@@ -9,10 +9,10 @@ import style from "./material-list.module.scss";
 import { twMerge } from "tailwind-merge";
 
 
-export default function MaterialList({ materials = [], selectedMaterials = [], size = "lg", onChange = null }) {
+export default function MaterialList({className = "", materials = [], selectedMaterials = [], size = "lg", onChange = null }) {
 
     return (
-        <div>
+        <div className={className}>
             {materials?.map((material, index) => {
                 return (
                     <div key={index} data-size={size} className={twMerge(style.flyin, `
