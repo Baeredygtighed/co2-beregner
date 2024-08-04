@@ -74,12 +74,12 @@ export default function ComparePage() {
                 <h1 className="text-center text-2xl font-semibold my-2 flex-1">Sammenlign materialer</h1>
             </header>
             
-            <div className="px-2 min-h-full mb-28" >
+            <div className="px-2 min-h-full mb-28 max-w-[800px] mx-auto" >
                 {!chartData && <Spinner />}
                 {chartData && <StackedChart labels={chartData.labels} datasets={chartData.datasets} />}
                 {materialStats && <>
                     
-                    <table className="w-full">
+                    <table className="w-full mx-auto">
                         <thead>
                             <tr>
                                 <th colSpan={5}><h2 className="text-center text-xl font-semibold my-2">Højeste CO<sub>2</sub> forbrug:</h2></th>
