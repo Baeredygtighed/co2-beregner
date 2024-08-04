@@ -19,22 +19,24 @@ export default function MaterialsPage() {
     useEffect(() => { readCookie() }, []);
 
     return (
-        <div className="flex">
+        <div className="flex min-h-lvh">
 
-            <section className="flex-1 flex flex-col content-stretch px-2 pb-28">
-                <header className="sticky top-0 py-2 bg-white border-b-1 z-10">
+            <div className="flex-1 flex flex-col content-stretch pb-28">
+                <header className="sticky top-0 py-2 bg-white border-b-1 z-10 px-2">
                     <h1 className="text-center text-3xl font-semibold">Materialer</h1>
                     <Input className="mb-1" startContent={<IoSearchOutline />} variant="bordered" isClearable="true" placeholder="Søg..." onInput={search} onClear={search} />
+                    
                 </header>
 
 
                 {axios.error && <div className="text-center text-red-600">Error: {error.message}</div>}
                 {axios.loading && <Spinner />}
-                {axios.data && selectedMaterials && <MaterialList materials={axios.data.results} selectedMaterials={selectedMaterials} onChange={readCookie} />}
+                {axios.data && selectedMaterials && <MaterialList className="px-4" materials={axios.data.results} selectedMaterials={selectedMaterials} onChange={readCookie} />}
+                
 
-            </section>
+            </div>
 
-            <MaterialSelector className="h-svh" materials={selectedMaterials} onChange={readCookie} />
+            <MaterialSelector materials={selectedMaterials} onChange={readCookie} />
 
         </div>
     )
