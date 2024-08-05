@@ -10,7 +10,7 @@ import { FaPen, FaTrash } from "react-icons/fa"
 import { toast } from "react-toastify"
 
 export default function Page() {
-	const { data, loading, error } = useAxios("/api/materials")
+	const { data, loading, error, update } = useAxios("/api/materials")
 
 	return (
 		<section className="px-4">
@@ -46,7 +46,7 @@ export default function Page() {
 								{material.name}
 								<div className="flex">
 									<Link href={"edit-material/" + material._id} className="p-4"><FaPen/></Link>
-									<Confirm id={material._id} name={material.name} />
+									<Confirm id={material._id} name={material.name} update={update} />
 								</div>
 							</li>
 						))}
@@ -57,12 +57,15 @@ export default function Page() {
 	)
 }
 
-function Confirm({ id, name }) {
+function Confirm({ id, name, update }) {
 	const { isOpen, onOpen, onOpenChange } = useDisclosure()
 	const [errorMessage, dispatch] = useFormState(deleteMaterial, null)
 
 	useEffect(function() {
-		if (errorMessage) {
+		if (errorMessage?.success === true) {
+			update("/api/materials")
+			toast.success("Materialet er slettet")
+		} else if (errorMessage) {
 			toast.error(errorMessage)
 		}
 	}, [errorMessage])
