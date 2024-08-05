@@ -152,42 +152,7 @@ export async function deleteTerm(_currentState, formData) {
 		console.error(error)
 		return error.message
 	}
-}
-
-export async function createTerm(_currentState, formData) {
-	const user = cookies().get("session")?.value
-	if (!user || decrypt(user) !== "admin") return "Du har ikke adgang til denne funktion"
-
-	const term = {
-		terms: formData.get("terms").split(","),
-		definition: formData.get("definition"),
-	}
-	try {
-		await connect()
-		const doc = await new Term(term).save()
-		return { success: true, doc }
-	} catch (error) {
-		console.error(error)
-		return error.message
-	}
-}
-
-export async function deleteTerm(_currentState, formData) {
-	const user = cookies().get("session")?.value
-	if (!user || decrypt(user) !== "admin") return "Du har ikke adgang til denne funktion"
-
-	const id = formData.get("id")
-
-	try {
-		await connect()
-		await Term.findByIdAndDelete(id).exec()
-		return { success: true }
-	} catch (error) {
-		console.error(error)
-		return error.message
-	}
-}
-	
+}	
 
 export async function getSelectedMaterials() {
 	return cookies().get("selectedMaterials")?.value ? JSON.parse(cookies().get("selectedMaterials").value) : [];
