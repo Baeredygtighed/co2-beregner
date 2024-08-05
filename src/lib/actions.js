@@ -87,6 +87,66 @@ export async function deleteMaterial(_currentState, formData) {
 	try {
 		await connect()
 		await Material.findByIdAndDelete(id).exec()
+		
+		return { success: true }
+	} catch (error) {
+		console.error(error)
+		return error.message
+	}
+}
+
+/* ==== TERMS ==== */
+
+export async function createTerm(_currentState, formData) {
+	const user = cookies().get("session")?.value
+	if (!user || decrypt(user) !== "admin") return "Du har ikke adgang til denne funktion"
+
+	const term = {
+		terms: formData.get("terms").split(",").map(e => e.trim()),
+		definition: formData.get("definition")
+	}
+
+	try {
+		await connect()
+		const doc = await new Term(term).save()
+		return { success: true, id: doc._id }
+	} catch (error) {
+		console.error(error)
+		return error.message
+	}
+}
+
+export async function editTerm(_currentState, formData) {
+	const user = cookies().get("session")?.value
+	if (!user || decrypt(user) !== "admin") return "Du har ikke adgang til denne funktion"
+
+	const id = formData.get("id")
+
+	const term = {
+		terms: formData.get("terms").split(",").map(e => e.trim()),
+		definition: formData.get("definition")
+	}
+
+	try {
+		await connect()
+		const doc = await Term.findByIdAndUpdate(id, { $set: term }, { new: true }).exec()
+		return { success: true }
+	} catch (error) {
+		console.error(error)
+		return error.message
+	}
+}
+
+export async function deleteTerm(_currentState, formData) {
+	const user = cookies().get("session")?.value
+	if (!user || decrypt(user) !== "admin") return "Du har ikke adgang til denne funktion"
+
+	const id = formData.get("id")
+
+	try {
+		await connect()
+		await Term.findByIdAndDelete(id).exec()
+		
 		return { success: true }
 	} catch (error) {
 		console.error(error)

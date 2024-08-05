@@ -9,14 +9,14 @@ import { useFormState, useFormStatus } from "react-dom"
 import { FaSpinner } from "react-icons/fa"
 import { toast } from "react-toastify"
 
-export default function Page() {
+export default function NewTerm() {
 	const [errorMessage, dispatch] = useFormState(createTerm, null)
 	const router = useRouter()
 
-	useEffect(function () {
+	useEffect(function() {
 		if (errorMessage?.success === true) {
-			toast.success("Ordet er gemt")
-			router.push("/dashboard/terms/")
+			toast.success("Ordbogsopslaget er orettet")
+			router.push("edit-term/" + errorMessage.id)
 		} else if (errorMessage) {
 			toast.error(errorMessage)
 		}

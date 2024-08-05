@@ -1,14 +1,14 @@
 import Term from "@/models/term"
 
 export async function GET(request, { params }) {
-	const query = params.query
+	const id = params.id
 
 	try {
-		const result = await Term.find({ terms: { $regex: new RegExp(query, "i") } }).select("-_id")
+		const result = await Term.findById(id).exec()
 
 		return Response.json({
 			url: request.url,
-			results: result,
+			result: result,
 		})
 	} catch (error) {
 		console.error(error)
