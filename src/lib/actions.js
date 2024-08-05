@@ -5,6 +5,9 @@ import User from "@/models/user"
 import { cookies } from "next/headers"
 import { decrypt, encrypt } from "@/lib/crypt"
 import Material from "@/models/material"
+import Term from "@/models/term"
+import { redirect } from "next/navigation"
+import { revalidatePath } from "next/cache"
 
 export async function authenticate(_currentState, formData) {
 	const username = formData.get("username")
@@ -86,7 +89,30 @@ export async function deleteMaterial(_currentState, formData) {
 	try {
 		await connect()
 		await Material.findByIdAndDelete(id).exec()
-		return { success: true }
+		
+		revalidatePath("/dashboard/materials")
+		redirect("/dashboard/materials", "push")
+	} catch (error) {
+		console.error(error)
+		return error.message
+	}
+}
+
+/* ==== TERMS ==== */
+
+export async function createTerm(_currentState, formData) {
+	const user = cookies().get("session")?.value
+	if (!user || decrypt(user) !== "admin") return "Du har ikke adgang til denne funktion"
+
+	const term = {
+		terms: formData.get("terms").split(",").map(e => e.trim()),
+		definition: formData.get("definition")
+	}
+
+	try {
+		await connect()
+		const doc = await new Term(term).save()
+		return { success: true, id: doc._id }
 	} catch (error) {
 		console.error(error)
 		return error.message

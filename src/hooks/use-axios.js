@@ -14,5 +14,5 @@ export default function useAxios(endpoint) {
 			.finally(() => setLoading(false))
 	}, [])
 
-	return { loading, data, error }
+	return { loading, data, error, setData }
 }

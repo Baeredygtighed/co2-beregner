@@ -1,10 +1,10 @@
 import Term from "@/models/term"
 
 export async function GET(request) {
-	const query = request.params.query
+	const id = request.params.id
 
 	try {
-		const result = await Term.find({ $text: { $search: query } }).select("-_id")
+		const result = await Term.findById(id)
 
 		return Response.json({
 			url: request.url,

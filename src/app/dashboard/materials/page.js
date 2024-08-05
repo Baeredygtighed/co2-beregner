@@ -40,7 +40,7 @@ export default function Page() {
 			{error && <p>Error: {error.message}</p>}
 			{data && (
 				<>
-					<ul>
+					<ul className="">
 						{data.results.map(material => (
 							<li key={material._id} className="flex justify-between leading-[3em] px-2 odd:bg-gray-200">
 								{material.name}
@@ -62,16 +62,14 @@ function Confirm({ id, name }) {
 	const [errorMessage, dispatch] = useFormState(deleteMaterial, null)
 
 	useEffect(function() {
-		if (errorMessage?.success === true) {
-			toast.success("Materialet er slettet")
-		} else if (errorMessage) {
+		if (errorMessage) {
 			toast.error(errorMessage)
 		}
 	}, [errorMessage])
 
 	return (
 		<>
-			<button className="p-4" onTouchEnd={onOpen}><FaTrash/></button>
+			<button className="p-4" onClick={onOpen}><FaTrash/></button>
 			<Modal isOpen={isOpen} onOpenChange={onOpenChange} placement="center" backdrop="blur">
 				<ModalContent>
 					{onClose => (
@@ -83,8 +81,8 @@ function Confirm({ id, name }) {
 						<ModalFooter>
 							<form action={dispatch}>
 								<Input type="hidden" name="id" defaultValue={id} />
-								<Button color="primary" type="submit" onTouchEnd={onClose}>Ja</Button>
-								<Button onTouchEnd={onClose} type="button">Afbryd</Button>
+								<Button color="primary" type="submit" onClick={onClose}>Ja</Button>
+								<Button onClick={onClose} type="button">Afbryd</Button>
 							</form>
 						</ModalFooter>
 						</>
