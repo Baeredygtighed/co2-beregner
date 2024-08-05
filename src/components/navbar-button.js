@@ -4,7 +4,9 @@ import { usePathname } from "next/navigation";
 
 export default function NavbarButton({url, text, icon, alias = null}) {
 
-    const isCurrentPage = url.length !== 1 ? usePathname().startsWith(url) || usePathname().startsWith(alias) : usePathname() === url;
+    const usepathname = usePathname()
+
+    const isCurrentPage = url.length !== 1 ? usepathname.startsWith(url) || usepathname.startsWith(alias) : usepathname === url;
     
     return (
         <li className="flex-1">

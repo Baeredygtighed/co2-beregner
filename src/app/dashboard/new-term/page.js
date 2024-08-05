@@ -20,7 +20,7 @@ export default function NewTerm() {
 		} else if (errorMessage) {
 			toast.error(errorMessage)
 		}
-	}, [errorMessage])
+	}, [errorMessage, router])
 
 	return (
 		<>

@@ -12,7 +12,7 @@ import { toast } from "react-toastify"
 import { FaPlus } from "react-icons/fa";
 
 export default function Page() {
-	const axios = useAxios("/api/terms")
+	const { loading, error, data, update } = useAxios("/api/terms")
 
 	return (
 		<>
@@ -20,7 +20,7 @@ export default function Page() {
 			<Button as={Link} href="/dashboard/new-term" color="primary" className="absolute right-0 mt-2 mx-4 rounded-full font-bold min-w-0 p-2 aspect-square text-2xl"><FaPlus /></Button>
 			<section className="px-4 py-2">
 				<h1 className="text-center text-3xl font-semibold mb-4">Ordbog</h1>
-				{axios.loading && (
+				{loading && (
 					<div className="space-y-3">
 						<Skeleton className="w-full rounded-lg">
 							<div className="h-12 w-full rounded-lg bg-default-200"></div>
@@ -42,11 +42,11 @@ export default function Page() {
 						</Skeleton>
 					</div>
 				)}
-				{axios.error && <p>Error: {error.message}</p>}
-				{axios.data && (
+				{error && <p>Error: {error.message}</p>}
+				{data && (
 					<>
 						<ul>
-							{axios.data.results.map(term => (
+							{data.results.map(term => (
 								<li key={term._id} className="flex justify-between leading-[3em] px-2 odd:bg-gray-200">
 									{term.terms[0]}
 									<div className="flex">
@@ -69,11 +69,11 @@ export default function Page() {
 		useEffect(function () {
 			if (errorMessage?.success === true) {
 				toast.success("Ordet er slettet")
-				axios.update("/api/terms")
+				update("/api/terms")
 			} else if (errorMessage) {
 				toast.error(errorMessage)
 			}
-		}, [errorMessage])
+		}, [errorMessage, update])
 	
 		return (
 			<>
@@ -84,7 +84,7 @@ export default function Page() {
 							<>
 								<ModalHeader>Slet</ModalHeader>
 								<ModalBody>
-									<p>Er du sikker på, at du vil slette "{name}"?</p>
+									<p>Er du sikker på, at du vil slette &quot;{name}&quot;?</p>
 								</ModalBody>
 								<ModalFooter>
 									<form action={dispatch}>

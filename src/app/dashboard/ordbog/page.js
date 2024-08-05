@@ -66,7 +66,7 @@ function Confirm({ id, name, update }) {
 		} else if (errorMessage) {
 			toast.error(errorMessage)
 		}
-	}, [errorMessage])
+	}, [errorMessage, update])
 
 	return (
 		<>
@@ -77,7 +77,7 @@ function Confirm({ id, name, update }) {
 						<>
 						<ModalHeader>Slet</ModalHeader>
 						<ModalBody>
-							<p>Er du sikker på, at du vil slette "{name}"?</p>
+							<p>Er du sikker på, at du vil slette &quot;{name}&quot;?</p>
 						</ModalBody>
 						<ModalFooter>
 							<form action={dispatch}>

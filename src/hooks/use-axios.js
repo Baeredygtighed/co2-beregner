@@ -16,7 +16,7 @@ export default function useAxios(endpoint) {
 			.finally(() => setLoading(false))
 	}
 
-	useEffect(() => { update(endpoint) }, [])
+	useEffect(() => { update(endpoint) }, [endpoint, update])
 
 	return { loading, data, error, update }
 }

@@ -19,7 +19,7 @@ export default function LoginPage() {
 		} else if (errorMessage) {
 			toast.error(errorMessage)
 		}
-	}, [errorMessage])
+	}, [errorMessage, router])
 
 	return (
 		<section className="px-4">
