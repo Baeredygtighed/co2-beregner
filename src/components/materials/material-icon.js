@@ -1,4 +1,4 @@
-import { GiWoodBeam, GiConcreteBag, GiRolledCloth, GiBrickPile, GiPapers, GiCheeseWedge } from "react-icons/gi";
+import { GiWoodBeam, GiConcreteBag, GiRolledCloth, GiBrickPile, GiPapers, GiCheeseWedge, GiMetalBar, GiWarpPipe } from "react-icons/gi";
 import { GrStatusUnknown } from "react-icons/gr";
 
 export default function MaterialIcon({ name, className }) {
@@ -8,7 +8,10 @@ export default function MaterialIcon({ name, className }) {
         { name: 'beklædning', icon: GiRolledCloth },
         { name: 'sten', icon: GiBrickPile },
         { name: 'isolering', icon: GiPapers  },
-        { name: 'organisk', icon: GiCheeseWedge   },
+        { name: 'organisk', icon: GiCheeseWedge },
+        { name: 'metal', icon: GiMetalBar },
+        { name: 'plast', icon: GiWarpPipe },
+
     ];
 
     const Icon = categoryIcons.find(icon => icon.name === name.toLowerCase())?.icon ?? GrStatusUnknown;

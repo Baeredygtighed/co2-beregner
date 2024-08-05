@@ -1,5 +1,6 @@
 "use client"
 
+import BackButton from "@/components/back-button"
 import { createTerm } from "@/lib/actions"
 import { Button, Input, Textarea } from "@nextui-org/react"
 import { useRouter } from "next/navigation"
@@ -22,19 +23,23 @@ export default function NewTerm() {
 	}, [errorMessage])
 
 	return (
-		<section className="px-4">
-			<h1>Nyt ordbogsopslag</h1>
-			<form action={dispatch}>
-				<Input label="Opslagsord" placeholder="fx biobaseret, biobaserede" description="Indtast gerne flere stavemåder adskilt af komma" name="terms" variant="underlined" isRequired />
-				<Textarea label="Definition" name="definition" variant="underlined" isRequired />
-				<SubmitButton/>
-			</form>
-		</section>
+		<>
+			<BackButton className="pt-1" />
+			<section className="px-4">
+				<h1 className="text-center text-3xl font-semibold mb-4">Nyt ord</h1>
+				<form action={dispatch}>
+					<Input label="Ord" name="terms" variant="underlined" isRequired />
+					<Textarea label="Definition" name="definition" variant="underlined" isRequired />
+
+					<SubmitButton />
+				</form>
+			</section>
+		</>
 	)
 }
 
 function SubmitButton() {
-	const {pending} = useFormStatus()
+	const { pending } = useFormStatus()
 
 	function handleClick(event) {
 		if (pending) {
@@ -48,6 +53,6 @@ function SubmitButton() {
 		className="w-full mt-4"
 		aria-disabled={pending}
 		onClick={handleClick}>
-		Opret ordbogsopslag {pending && <FaSpinner className="animate-spin" size={16}/>}
+		Opret ord {pending && <FaSpinner className="animate-spin" size={16} />}
 	</Button>)
 }
