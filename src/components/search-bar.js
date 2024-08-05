@@ -1,18 +1,16 @@
 "use client";
-import { useRouter } from "next/navigation";
+import { Input } from "@nextui-org/react";
+import { IoSearchOutline } from "react-icons/io5";
 import { twMerge } from "tailwind-merge";
 
-export default function SearchBar({baseUrl, value = "", className = ""}) {
+export default function SearchBar({className ='', onInput = null, value = ''}) {
 
-    const router = useRouter();
-
-    const search = event => {
-        const query = event.target.value.toLowerCase();
-
-        router.replace(!query ? `/${baseUrl}` : `/${baseUrl}/${query}`);
+    const handleInput = (event = null) => {
+        value = event?.target?.value ?? '';
+        onInput && onInput(event);
     }
 
     return (
-        <input onInput={search} type="text" value={value} placeholder="Søg..." className={twMerge("w-full p-2 outline-none bg-gray-200 rounded-xl", className)} />
+        <Input className={twMerge("mx-1 w-[calc(100%-.5rem)]", className)} startContent={<IoSearchOutline />} variant="bordered" isClearable="true" placeholder="Søg..." onInput={handleInput} onClear={handleInput} />
     )
 }

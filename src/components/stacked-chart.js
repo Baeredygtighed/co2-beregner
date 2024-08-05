@@ -35,8 +35,6 @@ export default function StackedChart({labels = null, datasets = null}) {
         Legend
       );
 
-    console.log(data);
-
     return (
         <Bar data={data} options={options} />
     )
