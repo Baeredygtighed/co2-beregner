@@ -5,7 +5,7 @@ export async function GET(request) {
 	const offset = request.nextUrl.searchParams.get("offset") || 0
 	
 	try {
-		const result = await Term.find().select("-_id").limit(limit).skip(offset)
+		const result = await Term.find().limit(limit).skip(offset)
 	
 		return Response.json({
 			results: result,
