@@ -16,7 +16,8 @@ export default function useAxios(endpoint) {
 			.finally(() => setLoading(false))
 	}
 
-	useEffect(() => { update(endpoint) }, [endpoint, update])
+	// eslint-disable-next-line
+	useEffect(() => { update(endpoint) }, [])
 
 	return { loading, data, error, update }
 }
