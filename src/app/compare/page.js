@@ -90,7 +90,7 @@ export default function ComparePage() {
                                 <th colSpan={2} className="text-center">CO<sub>2</sub></th>
                             </tr>
                         </thead>
-                        <tbody className="[&>tr>td:nth-child(1)]:w-min [&>tr>td:nth-child(3)]:w-max [&>tr>td:nth-child(4)]:text-right [&>tr>td:nth-child(5)]:text-xs [&>tr>td:nth-child(5)]:w-min">
+                        <tbody className="[&>tr>td:nth-child(1)]:w-min [&>tr>td:nth-child(3)]:text-center [&>tr>td:nth-child(3)]:w-max [&>tr>td:nth-child(4)]:text-right [&>tr>td:nth-child(5)]:text-xs [&>tr>td:nth-child(5)]:w-min">
                             <tr>
                                 <td><LuFactory /></td>
                                 <td>Produktion</td>
@@ -130,7 +130,7 @@ export default function ComparePage() {
                                 <th colSpan={2} className="text-center">CO<sub>2</sub></th>
                             </tr>
                         </thead>
-                        <tbody className="[&>tr>td:nth-child(1)]:w-min [&>tr>td:nth-child(3)]:w-max [&>tr>td:nth-child(4)]:text-right [&>tr>td:nth-child(5)]:text-xs">
+                        <tbody className="[&>tr>td:nth-child(1)]:w-min [&>tr>td:nth-child(3)]:text-center [&>tr>td:nth-child(3)]:w-max [&>tr>td:nth-child(4)]:text-right [&>tr>td:nth-child(5)]:text-xs">
                             <tr>
                                 <td><LuFactory /></td>
                                 <td>Produktion</td>
