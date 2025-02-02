@@ -2,7 +2,7 @@ import { connect } from "@/lib/db"
 import Material from "@/models/material"
 
 export async function GET(request) {
-	const limit = request.nextUrl.searchParams.get("limit") || 10
+	const limit = request.nextUrl.searchParams.get("limit") || 2000
 	const offset = request.nextUrl.searchParams.get("offset") || 0
 	const search = request.nextUrl.searchParams.get("search")
 

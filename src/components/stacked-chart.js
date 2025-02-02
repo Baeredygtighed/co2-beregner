@@ -19,7 +19,7 @@ export default function StackedChart({labels = null, datasets = null}) {
         plugins: {
             title: {
               display: true,
-              text: 'kg CO₂ eq/ton',
+              text: 'kg CO₂ eq/m³',
             },
         }
     };
@@ -32,7 +32,7 @@ export default function StackedChart({labels = null, datasets = null}) {
         BarElement,
         Title,
         Tooltip,
-        Legend
+        //Legend
       );
 
     return (

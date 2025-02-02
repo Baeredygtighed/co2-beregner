@@ -1,4 +1,4 @@
-import { GiWoodBeam, GiConcreteBag, GiRolledCloth, GiBrickPile, GiPapers, GiCheeseWedge, GiMetalBar, GiWarpPipe } from "react-icons/gi";
+import { GiWoodBeam, GiConcreteBag, GiRolledCloth, GiBrickPile, GiPapers, GiCheeseWedge, GiMetalBar, GiWarpPipe, GiStoneTablet, GiMinerals, GiPlantRoots } from "react-icons/gi";
 import { GrStatusUnknown } from "react-icons/gr";
 
 export default function MaterialIcon({ name, className }) {
@@ -11,6 +11,9 @@ export default function MaterialIcon({ name, className }) {
         { name: 'organisk', icon: GiCheeseWedge },
         { name: 'metal', icon: GiMetalBar },
         { name: 'plast', icon: GiWarpPipe },
+        { name: 'natursten', icon: GiStoneTablet },
+        { name: 'mineralsk', icon: GiMinerals },
+        { name: 'biobaseret', icon: GiPlantRoots },
 
     ];
 

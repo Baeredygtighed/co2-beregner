@@ -13,14 +13,14 @@ const materialSchema = new Schema({
 		type: Number,
 		required: true,
 	},
-	usage_cost: {
+	/* usage_cost: {
 		type: Number,
 		required: true,
 	},
 	destruction_cost: {
 		type: Number,
 		required: true,
-	},
+	}, */
 	/* image: {
 		type: String,
 		required: true,

@@ -77,7 +77,7 @@ export default function ComparePage() {
             <div className="px-2 min-h-full mb-28 max-w-[800px] mx-auto" >
                 {!chartData && <Spinner />}
                 {chartData && <StackedChart labels={chartData.labels} datasets={chartData.datasets} />}
-                {materialStats && <>
+                {/* materialStats */false && <>
                     
                     <table className="w-full mx-auto">
                         <thead>

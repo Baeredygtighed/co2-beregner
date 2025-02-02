@@ -39,8 +39,8 @@ export async function createMaterial(_currentState, formData) {
 		name: formData.get("name"),
 		category: formData.get("category"),
 		production_cost: formData.get("production_cost"),
-		usage_cost: formData.get("usage_cost"),
-		destruction_cost: formData.get("destruction_cost"),
+		//usage_cost: formData.get("usage_cost"),
+		//destruction_cost: formData.get("destruction_cost"),
 		//image: formData.get("image"),
 	}
 	try {
@@ -63,8 +63,8 @@ export async function editMaterial(_currentState, formData) {
 		name: formData.get("name"),
 		category: formData.get("category"),
 		production_cost: formData.get("production_cost"),
-		usage_cost: formData.get("usage_cost"),
-		destruction_cost: formData.get("destruction_cost"),
+		//usage_cost: formData.get("usage_cost"),
+		//destruction_cost: formData.get("destruction_cost"),
 		//image: formData.get("image"),
 	}
 

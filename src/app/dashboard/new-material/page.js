@@ -30,9 +30,9 @@ export default function Page() {
 				<form action={dispatch}>
 					<Input label="Materialenavn" name="name" variant="underlined" isRequired />
 					<Input label="Materialekategori" name="category" variant="underlined" isRequired />
-					<Input type="number" label="Produktionsomkostninger" name="production_cost" variant="underlined" isRequired />
-					<Input type="number" label="Brugsomkostninger" name="usage_cost" variant="underlined" isRequired />
-					<Input type="number" label="Bortskaffelsesomkostninger" name="destruction_cost" variant="underlined" isRequired />
+					<Input type="number" label="CO2 omkostninger" name="production_cost" variant="underlined" isRequired />
+					{/* <Input type="number" label="Brugsomkostninger" name="usage_cost" variant="underlined" isRequired />
+					<Input type="number" label="Bortskaffelsesomkostninger" name="destruction_cost" variant="underlined" isRequired /> */}
 					<SubmitButton />
 				</form>
 			</section>

@@ -45,7 +45,7 @@ export default function Page() {
 			{error && <p>Error: {error.message}</p>}
 			{data && (
 				<>
-					<ul className="">
+					<ul className="overflow-y-scroll">
 						{data.results.map(material => (
 							<li key={material._id} className="flex justify-between leading-[3em] px-2 odd:bg-gray-200">
 								{material.name}

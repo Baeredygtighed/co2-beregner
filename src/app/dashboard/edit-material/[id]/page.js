@@ -33,9 +33,9 @@ export default function EditMaterial({ params }) {
 					<Input type="hidden" name="id" defaultValue={params.id} />
 					<Input label="Materialenavn" name="name" variant="underlined" defaultValue={data.result.name} isRequired />
 					<Input label="Materialekategori" name="category" variant="underlined" defaultValue={data.result.category} isRequired />
-					<Input type="number" label="Produktionsomkostninger" name="production_cost" defaultValue={data.result.production_cost} variant="underlined" isRequired />
-					<Input type="number" label="Brugsomkostninger" name="usage_cost" variant="underlined" defaultValue={data.result.usage_cost} isRequired />
-					<Input type="number" label="Bortskaffelsesomkostninger" name="destruction_cost" variant="underlined" defaultValue={data.result.destruction_cost} isRequired />
+					<Input type="number" label="CO2 omkostninger" name="production_cost" defaultValue={data.result.production_cost} variant="underlined" isRequired />
+					{/* <Input type="number" label="Brugsomkostninger" name="usage_cost" variant="underlined" defaultValue={data.result.usage_cost} isRequired />
+					<Input type="number" label="Bortskaffelsesomkostninger" name="destruction_cost" variant="underlined" defaultValue={data.result.destruction_cost} isRequired /> */}
 					<SubmitButton />
 				</form>}
 			</section>
