@@ -1,4 +1,4 @@
-import { GiWoodBeam, GiConcreteBag, GiRolledCloth, GiBrickPile, GiPapers, GiCheeseWedge, GiMetalBar, GiWarpPipe, GiStoneTablet, GiMinerals, GiPlantRoots } from "react-icons/gi";
+import { GiWoodBeam, GiConcreteBag, GiRolledCloth, GiBrickPile, GiPapers, GiCheeseWedge, GiMetalBar, GiWarpPipe, GiStoneTablet, GiMinerals, GiPlantRoots, GiWindow, GiMolecule } from "react-icons/gi";
 import { GrStatusUnknown } from "react-icons/gr";
 
 export default function MaterialIcon({ name, className }) {
@@ -7,17 +7,19 @@ export default function MaterialIcon({ name, className }) {
         { name: 'beton', icon: GiConcreteBag },
         { name: 'beklædning', icon: GiRolledCloth },
         { name: 'sten', icon: GiBrickPile },
-        { name: 'isolering', icon: GiPapers  },
+        { name: 'isolering', icon: GiPapers },
         { name: 'organisk', icon: GiCheeseWedge },
         { name: 'metal', icon: GiMetalBar },
         { name: 'plast', icon: GiWarpPipe },
         { name: 'natursten', icon: GiStoneTablet },
         { name: 'mineralsk', icon: GiMinerals },
         { name: 'biobaseret', icon: GiPlantRoots },
+        { name: 'komponenter', icon: GiWindow },
+        { name: 'kunststof', icon: GiMolecule },
 
     ];
 
     const Icon = categoryIcons.find(icon => icon.name === name.toLowerCase())?.icon ?? GrStatusUnknown;
 
-    return ( <Icon className={className} /> );
+    return (<Icon className={className} />);
 }
